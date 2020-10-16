@@ -1,0 +1,15 @@
+type Actor {
+  id: ID
+  name: String
+  lastname: String
+}
+
+type ActorsResponse {
+  nodes: [Actor]
+  count: Int
+}
+
+
+type Query {
+  actors: [Actor]
+}

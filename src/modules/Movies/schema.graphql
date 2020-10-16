@@ -1,0 +1,16 @@
+type Movie {
+  id: ID
+  name: String
+  lastname: String
+  fullName: String
+}
+
+type MovieResponse {
+  nodes: [ Movie ]
+  count: Int
+}
+
+
+type Query {
+  movies: [Movie]
+}
