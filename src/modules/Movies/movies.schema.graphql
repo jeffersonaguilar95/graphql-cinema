@@ -1,3 +1,5 @@
+scalar Rate
+
 enum LANGUAGE {
   english
   spanish
@@ -11,18 +13,17 @@ type Movie {
   id: ID
   title: String
   releaseDate: Date
+  releaseYear: Int
   description: String
   shortDescription: String
   synopsis: String
   originalLanguage: LANGUAGE
   dubbingLanguages: [ LANGUAGE ]
-  rating: String # TODO: scalar
-  releaseYear: String # TODO:  scalar
-  duration: Int # TODO:  duration in ms
+  rating: Float
+  duration: Int
   genre: Genre
   actors: [ Actor ]
-  # TODO: Directors
-  directors: [ String ]
+  directors: [ Director ]
 }
 
 type Movies {
