@@ -1,7 +1,5 @@
-/**
- * Module dependencies.
- */
 import app from './app';
+import graphqlServer from './graphqlServer';
 import http from 'http';
 import dotenv from 'dotenv';
 
@@ -22,7 +20,7 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen({ port }, () => console.log(`Now browse to http://localhost:${port}`));
+server.listen({ port }, () => console.log(`Now browse to http://localhost:${port}/${graphqlServer.graphqlPath}`));
 
 /**
  * Normalize a port into a number, string, or false.

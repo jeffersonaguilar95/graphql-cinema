@@ -1,0 +1,22 @@
+scalar Date
+
+enum GENDER {
+  male
+  female
+}
+
+interface Person {
+  id: ID
+  name: String
+  birthName: String
+  birthDate: Date
+  birthPlace: String
+  gender: GENDER
+}
+
+type Info {
+  count: Int
+  pages: Int
+  next: Int
+  prev: Int
+}

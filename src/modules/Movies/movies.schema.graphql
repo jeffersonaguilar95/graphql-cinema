@@ -1,0 +1,37 @@
+enum LANGUAGE {
+  english
+  spanish
+  portuguese
+  german
+  french
+  chinese
+}
+
+type Movie {
+  id: ID
+  title: String
+  releaseDate: Date
+  description: String
+  shortDescription: String
+  synopsis: String
+  originalLanguage: LANGUAGE
+  dubbingLanguages: [ LANGUAGE ]
+  rating: String # TODO: scalar
+  releaseYear: String # TODO:  scalar
+  duration: Int # TODO:  duration in ms
+  genre: Genre
+  actors: [ Actor ]
+  # TODO: Directors
+  directors: [ String ]
+}
+
+type Movies {
+  results: [ Movie ]
+  info: Info
+}
+
+
+type Query {
+  movies: Movies
+  movie(id: ID!): Movie
+}

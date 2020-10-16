@@ -12,7 +12,7 @@ const schema = loadSchemaSync('./**/*.graphql', {
 });
 
 // Get resolvers files paths
-const resolversFiles = glob.sync(['./**/resolvers.ts'], { absolute: true });
+const resolversFiles = glob.sync(['./**/*.resolvers.ts'], { absolute: true });
 
 // Get array of resolvers
 const resolversArray = loadFilesSync(resolversFiles);
@@ -24,7 +24,7 @@ const schemaWithResolvers = addResolversToSchema({
 });
 
 // Initialize Apollo server
-const apolloServer = new ApolloServer({
+const apolloServer: ApolloServer = new ApolloServer({
   schema: schemaWithResolvers
 });
 

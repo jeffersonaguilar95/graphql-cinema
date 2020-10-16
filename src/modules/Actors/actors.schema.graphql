@@ -1,0 +1,22 @@
+type Actor implements Person{
+  id: ID
+  name: String
+  birthName: String
+  nicknames: [String]
+  birthDate: Date
+  birthPlace: String
+  gender: GENDER
+  heightCentimeters: Int
+  movies: [ Movie ]
+}
+
+type Actors {
+  results: [ Actor ]
+  info: Info
+}
+
+
+type Query {
+  actors: Actors
+  actor(id: ID!): Actor
+}

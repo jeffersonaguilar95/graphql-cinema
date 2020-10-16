@@ -1,0 +1,21 @@
+type Director implements Person {
+  id: ID
+  name: String
+  birthName: String
+  birthDate: Date
+  birthPlace: String
+  gender: GENDER
+  movies: [ Movie ]
+  genres: [ Genre ]
+}
+
+type Directors {
+  results: [ Director ]
+  info: Info
+}
+
+
+type Query {
+  directors: Directors
+  director(id: ID!): Director
+}
