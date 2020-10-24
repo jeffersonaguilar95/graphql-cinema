@@ -1,17 +1,28 @@
+import Movie from './movie.model';
+import Genre from '../Genres/genre.model';
+
+const movies = () => {
+  return {
+    results: Movie.find({})
+  };
+};
+
+const createMovie = (_, { movie }) => {
+  return Movie.create(movie);
+};
+
+const genre = ({ genre: genreId }) => {
+  return Genre.findOne({ _id: genreId });
+};
+
 export default {
   Query: {
-    movies: () => [
-      {
-        id: 1,
-        name: 'Angel',
-        lastname: 'Feliz',
-        fullName: 'Angel Feliz',
-        email: 'afeliz@yopmail.com',
-        phones: ['34324-23423'],
-        about: 'dfgdsgffdsgdfsg',
-        profession: 'fadgsdfgdfsgdfg',
-        face_base64: 'sdgfdsgfdfgdfgfd'
-      }
-    ]
+    movies
+  },
+  Mutation: {
+    createMovie
+  },
+  Movie: {
+    genre
   }
 };

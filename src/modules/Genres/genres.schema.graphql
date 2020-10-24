@@ -1,9 +1,18 @@
-type Genre {
-  id: ID
-  type: String
+type Genre @entity {
+  id: ID! @id
+  type: String! @column
+  movies: [ Movie ] @link
+}
+
+input GenreInput {
+  type: String!
 }
 
 
 type Query {
   genres: [ Genre ]
+}
+
+type Mutation {
+  createGenre(genre: GenreInput): Genre
 }

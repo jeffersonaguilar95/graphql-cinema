@@ -1,12 +1,22 @@
-type Director implements Person {
+type Director implements Person @entity {
   id: ID
   name: String
   birthName: String
   birthDate: Date
   birthPlace: String
   gender: GENDER
+  genres: [ Genre ] @link
   movies: [ Movie ]
-  genres: [ Genre ]
+}
+
+input DirectorInput {
+  name: String!
+  birthName: String
+  birthDate: Date
+  birthPlace: String
+  gender: GENDER
+  movies: [ ID ]
+  genres: [ ID ]
 }
 
 type Directors {
@@ -16,6 +26,10 @@ type Directors {
 
 
 type Query {
-  directors: Directors
+  directors(page: Int, limit: Int): Directors
   director(id: ID!): Director
+}
+
+type Mutation {
+  createDirector(director: DirectorInput): Director
 }

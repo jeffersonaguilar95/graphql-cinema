@@ -1,13 +1,24 @@
-type Actor implements Person{
+type Actor implements Person @entity {
   id: ID
   name: String
   birthName: String
-  nicknames: [String]
   birthDate: Date
   birthPlace: String
   gender: GENDER
-  heightCentimeters: Int
+  nicknames: [String] @column
+  heightCentimeters: Int @column
   movies: [ Movie ]
+}
+
+input ActorInput {
+  name: String!
+  birthName: String
+  birthDate: Date
+  birthPlace: String
+  gender: GENDER
+  nicknames: [String]
+  heightCentimeters: Int
+  movies: [ ID ]
 }
 
 type Actors {
@@ -17,6 +28,10 @@ type Actors {
 
 
 type Query {
-  actors: Actors
+  actors(page: Int, limit: Int): Actors
   actor(id: ID!): Actor
+}
+
+type Mutation {
+  createActor(actor: ActorInput): Actor
 }

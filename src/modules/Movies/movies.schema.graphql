@@ -9,21 +9,33 @@ enum LANGUAGE {
   chinese
 }
 
-type Movie {
-  id: ID
-  title: String
+type Movie @entity {
+  id: ID @id
+  title: String @column
+  releaseDate: Date @column(overrideType: "Date")
+  releaseYear: Int @column
+  description: String @column
+  shortDescription: String @column
+  originalLanguage: LANGUAGE @column
+  dubbingLanguages: [ LANGUAGE ] @column
+  rating: Float @column
+  duration: Int @column
+  genre: Genre @link
+  actors: [ Actor ] @link
+  director: Director @link
+}
+
+input MovieInput {
+  title: String!
   releaseDate: Date
   releaseYear: Int
   description: String
   shortDescription: String
-  synopsis: String
   originalLanguage: LANGUAGE
   dubbingLanguages: [ LANGUAGE ]
   rating: Float
   duration: Int
-  genre: Genre
-  actors: [ Actor ]
-  directors: [ Director ]
+  genre: ID
 }
 
 type Movies {
@@ -31,8 +43,11 @@ type Movies {
   info: Info
 }
 
-
 type Query {
   movies: Movies
   movie(id: ID!): Movie
+}
+
+type Mutation {
+  createMovie(movie: MovieInput): Movie
 }
