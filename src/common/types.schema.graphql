@@ -5,18 +5,20 @@ enum GENDER {
   female
 }
 
-interface Person {
-  id: ID
-  name: String
-  birthName: String
-  birthDate: Date
-  birthPlace: String
-  gender: GENDER
+interface Person @abstractEntity(discriminatorField: "type") {
+  id: ID @id
+  name: String @column(overrideType: "Date")
+  birthName: String @column
+  birthDate: Date @column
+  birthPlace: String @column
+  gender: GENDER @column
 }
 
 type Info {
-  count: Int
-  pages: Int
-  next: Int
-  prev: Int
+  totalDocs: Int
+  limit: Int
+  page: Int
+  totalPages: Int
+  nextPage: Int
+  prevPage: Int
 }
