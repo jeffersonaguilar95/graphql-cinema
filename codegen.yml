@@ -8,4 +8,12 @@ generates:
       - "typescript-resolvers"
       - "typescript-mongodb"
     config:
+      declarationKind: 'interface'
       allowParentTypeOverride: false
+      objectIdType: MongooseId#./customTypes
+      customResolverFn: ./customTypes#ResolverFn
+      mappers:
+        Genre: ../modules/Genres/genre.model#GenreModel
+        Movie: ../modules/Movies/movie.model#MovieModel
+        Director: ../modules/Directors/director.model#DirectorModel
+        Actor: ../modules/Actors/actor.model#ActorModel

@@ -1,5 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 import { MovieDbObject } from '../../common/generatedTypes';
+
+export type MovieModel = MovieDbObject & Document;
 
 const MovieSchema: Schema = new Schema({
   title: { type: String, unique: true },
@@ -16,4 +18,4 @@ const MovieSchema: Schema = new Schema({
   actors: [{ type: Schema.Types.ObjectId, ref: 'Actor' }]
 });
 
-export default mongoose.model<MovieDbObject>('Movie', MovieSchema);
+export default mongoose.model<MovieModel>('Movie', MovieSchema);

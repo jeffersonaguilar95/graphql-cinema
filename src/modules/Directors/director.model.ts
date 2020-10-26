@@ -1,8 +1,9 @@
-import mongoose, { Schema } from 'mongoose';
-import mongoosePaginate from 'mongoose-paginate-v2';
+import mongoose, { Document, Schema } from 'mongoose';
 import { DirectorDbObject, Gender } from '../../common/generatedTypes';
 
-const DirectorSchema: Schema<DirectorDbObject> = new Schema({
+export type DirectorModel = DirectorDbObject & Document;
+
+const DirectorSchema: Schema = new Schema({
   name: { type: String },
   birthName: { type: String },
   birthDate: { type: Date },
@@ -11,6 +12,4 @@ const DirectorSchema: Schema<DirectorDbObject> = new Schema({
   genres: [{ type: Schema.Types.ObjectId, ref: 'Genre' }]
 });
 
-DirectorSchema.plugin(mongoosePaginate);
-
-export default mongoose.model<DirectorDbObject>('Director', DirectorSchema);
+export default mongoose.model<DirectorModel>('Director', DirectorSchema);

@@ -10,7 +10,7 @@ enum LANGUAGE {
 }
 
 type Movie @entity {
-  id: ID @id
+  id: ID! @id
   title: String @column
   releaseDate: Date @column(overrideType: "Date")
   releaseYear: Int @column
@@ -44,7 +44,7 @@ type Movies {
 }
 
 type Query {
-  movies: Movies
+  movies(page: Int, limit: Int): Movies
   movie(id: ID!): Movie
 }
 

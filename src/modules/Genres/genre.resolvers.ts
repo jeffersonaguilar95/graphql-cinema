@@ -1,19 +1,20 @@
+import { Resolvers, QueryResolvers, MutationResolvers, GenreResolvers } from '../../common/generatedTypes';
 import Movie from '../Movies/movie.model';
 import Genre from './genre.model';
 
-const genres = () => {
+const genres: QueryResolvers['genres'] = () => {
   return Genre.find({});
 };
 
-const createGenre = (_, { genre }) => {
+const createGenre: MutationResolvers['createGenre'] = (_, { genre }) => {
   return Genre.create({ type: genre.type });
 };
 
-const movies = ({ _id }) => {
-  return Movie.find({ genre: _id });
+const movies: GenreResolvers['movies'] = (parent) => {
+  return Movie.find({ genre: parent._id });
 };
 
-export default {
+const resolvers: Resolvers = {
   Query: {
     genres
   },
@@ -24,3 +25,5 @@ export default {
     movies
   }
 };
+
+export default resolvers;

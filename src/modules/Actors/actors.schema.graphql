@@ -1,5 +1,5 @@
 type Actor implements Person @entity {
-  id: ID
+  id: ID!
   name: String
   birthName: String
   birthDate: Date

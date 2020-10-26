@@ -6,7 +6,7 @@ enum GENDER {
 }
 
 interface Person @abstractEntity(discriminatorField: "type") {
-  id: ID @id
+  id: ID! @id
   name: String @column(overrideType: "Date")
   birthName: String @column
   birthDate: Date @column

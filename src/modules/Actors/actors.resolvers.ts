@@ -1,20 +1,22 @@
+import { Resolvers, QueryResolvers, MutationResolvers, ActorResolvers } from '../../common/generatedTypes';
 import Movie from '../Movies/movie.model';
 import Actor from './actor.model';
 
-const actor = (_, { id }) => {
+const actor: QueryResolvers['actor'] = (_, { id }) => {
   return Actor.findById(id).exec();
 };
 
-const actors = async (_, { page = 1, limit = 10 }) => {
-  const { docs: results, ...info } = await Actor.paginate({}, { page, limit });
+const actors: QueryResolvers['actors'] = async (_, { page = 1, limit = 10 }) => {
+  const results = await Actor.find({}, {}, { skip: limit * page, limit }).exec();
 
   return {
     results,
-    info
+    info: {}
   };
 };
 
-const createActor = async (_, { actor: { movies, ...restActor } }) => {
+const createActor: MutationResolvers['createActor'] = async (_, { actor: { movies, ...restActor } }) => {
+  // @ts-ignore
   const savedActor = await Actor.create(restActor);
   if (movies?.length) {
     await Movie.updateMany({ _id: { $in: movies } }, { $push: { actors: savedActor._id } }).exec();
@@ -22,11 +24,11 @@ const createActor = async (_, { actor: { movies, ...restActor } }) => {
   return savedActor;
 };
 
-const movies = ({ _id }) => {
+const movies: ActorResolvers['movies'] = ({ _id }) => {
   return Movie.find({ actors: _id }).exec();
 };
 
-export default {
+const resolvers: Resolvers = {
   Query: {
     actor,
     actors
@@ -38,3 +40,5 @@ export default {
     movies
   }
 };
+
+export default resolvers;

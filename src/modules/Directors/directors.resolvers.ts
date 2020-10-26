@@ -1,21 +1,23 @@
+import { Resolvers, QueryResolvers, MutationResolvers, DirectorResolvers } from '../../common/generatedTypes';
 import Movie from '../Movies/movie.model';
 import Genre from '../Genres/genre.model';
 import Director from './director.model';
 
-const director = (_, { id }) => {
+const director: QueryResolvers['director'] = (_, { id }) => {
   return Director.findById(id).exec();
 };
 
-const directors = async (_, { page = 1, limit = 10 }) => {
-  const { docs: results, ...info } = await Director.paginate({}, { page, limit });
+const directors: QueryResolvers['directors'] = async (_, { page = 1, limit = 10 }) => {
+  const results = await Director.find({}, {}, { skip: limit * page, limit }).exec();
 
   return {
     results,
-    info
+    info: {}
   };
 };
 
-const createDirector = async (_, { director: { movies, ...restDirector } }) => {
+const createDirector: MutationResolvers['createDirector'] = async (_, { director: { movies, ...restDirector } }) => {
+  // @ts-ignore
   const savedDirector = await Director.create(restDirector);
   if (movies?.length) {
     await Movie.updateMany({ _id: { $in: movies } }, { $push: { directors: savedDirector._id } }).exec();
@@ -23,15 +25,15 @@ const createDirector = async (_, { director: { movies, ...restDirector } }) => {
   return savedDirector;
 };
 
-const movies = ({ _id }) => {
+const movies: DirectorResolvers['movies'] = ({ _id }) => {
   return Movie.find({ directors: _id }).exec();
 };
 
-const genres = ({ genres }) => {
+const genres: DirectorResolvers['genres'] = ({ genres }) => {
   return Genre.find({ _id: { $in: genres } }).exec();
 };
 
-export default {
+const resolvers: Resolvers = {
   Query: {
     director,
     directors
@@ -44,3 +46,5 @@ export default {
     movies
   }
 };
+
+export default resolvers;

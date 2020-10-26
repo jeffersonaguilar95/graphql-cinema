@@ -1,17 +1,16 @@
-import mongoose, { Schema } from 'mongoose';
-import mongoosePaginate from 'mongoose-paginate-v2';
+import mongoose, { Document, Schema } from 'mongoose';
 import { ActorDbObject, Gender } from '../../common/generatedTypes';
 
-const ActorSchema: Schema<ActorDbObject> = new Schema({
-  name: { type: String },
-  birthName: { type: String },
-  birthDate: { type: Date },
-  birthPlace: { type: String },
+export type ActorModel = ActorDbObject & Document;
+
+const ActorSchema: Schema = new Schema({
+  name: String,
+  birthName: String,
+  birthDate: Date,
+  birthPlace: String,
   gender: { type: String, enum: [Gender.Male, Gender.Female] },
-  nicknames: [{ type: String }],
+  nicknames: [String],
   heightCentimeters: Number
 });
 
-ActorSchema.plugin(mongoosePaginate);
-
-export default mongoose.model<ActorDbObject>('Actor', ActorSchema);
+export default mongoose.model<ActorModel>('Actor', ActorSchema);
