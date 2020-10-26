@@ -15,7 +15,7 @@ interface Person @abstractEntity(discriminatorField: "type") {
 }
 
 type Info {
-  totalDocs: Int
+  totalRecords: Int
   limit: Int
   page: Int
   totalPages: Int

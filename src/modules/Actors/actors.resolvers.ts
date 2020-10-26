@@ -1,4 +1,5 @@
 import { Resolvers, QueryResolvers, MutationResolvers, ActorResolvers } from '../../common/generatedTypes';
+import { generateInfo } from '../../common/utils';
 import Movie from '../Movies/movie.model';
 import Actor from './actor.model';
 
@@ -7,11 +8,12 @@ const actor: QueryResolvers['actor'] = (_, { id }) => {
 };
 
 const actors: QueryResolvers['actors'] = async (_, { page = 1, limit = 10 }) => {
-  const results = await Actor.find({}, {}, { skip: limit * page, limit }).exec();
+  const results = await Actor.find({}, {}, { skip: limit * (page - 1), limit }).exec();
+  const info = await generateInfo(Actor, page, limit);
 
   return {
     results,
-    info: {}
+    info
   };
 };
 

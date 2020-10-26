@@ -1,4 +1,5 @@
 import { Resolvers, QueryResolvers, MutationResolvers, DirectorResolvers } from '../../common/generatedTypes';
+import { generateInfo } from '../../common/utils';
 import Movie from '../Movies/movie.model';
 import Genre from '../Genres/genre.model';
 import Director from './director.model';
@@ -8,11 +9,12 @@ const director: QueryResolvers['director'] = (_, { id }) => {
 };
 
 const directors: QueryResolvers['directors'] = async (_, { page = 1, limit = 10 }) => {
-  const results = await Director.find({}, {}, { skip: limit * page, limit }).exec();
+  const results = await Director.find({}, {}, { skip: limit * (page - 1), limit }).exec();
+  const info = await generateInfo(Director, page, limit);
 
   return {
     results,
-    info: {}
+    info
   };
 };
 
