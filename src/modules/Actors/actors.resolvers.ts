@@ -16,8 +16,7 @@ const actors: QueryResolvers['actors'] = async (_, { page = 1, limit = 10 }) => 
 };
 
 const createActor: MutationResolvers['createActor'] = async (_, { actor: { movies, ...restActor } }) => {
-  // @ts-ignore
-  const savedActor = await Actor.create(restActor);
+  const savedActor = await Actor.create({ type: 'actor', ...restActor });
   if (movies?.length) {
     await Movie.updateMany({ _id: { $in: movies } }, { $push: { actors: savedActor._id } }).exec();
   }

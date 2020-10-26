@@ -1,5 +1,6 @@
 import Chance from 'chance';
-import Director from '../modules/Directors/director.model';
+import Director, { DirectorModel } from '../modules/Directors/director.model';
+import { GenreModel } from '../modules/Genres/genre.model';
 
 const chance = new Chance();
 
@@ -23,6 +24,7 @@ function generateFakeDirectors(genres) {
       const [name, , lastName] = birthName.split(' ');
 
       return {
+        type: 'director',
         name: `${name} ${lastName}`,
         birthName: birthName,
         birthDate: chance.birthday(),
@@ -33,6 +35,6 @@ function generateFakeDirectors(genres) {
     });
 }
 
-export default function directorsSeeder(genres) {
+export default function directorsSeeder(genres: GenreModel[]): Promise<DirectorModel[]> {
   return Director.insertMany(generateFakeDirectors(genres));
 }

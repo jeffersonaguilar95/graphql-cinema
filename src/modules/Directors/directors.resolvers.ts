@@ -17,16 +17,15 @@ const directors: QueryResolvers['directors'] = async (_, { page = 1, limit = 10 
 };
 
 const createDirector: MutationResolvers['createDirector'] = async (_, { director: { movies, ...restDirector } }) => {
-  // @ts-ignore
-  const savedDirector = await Director.create(restDirector);
+  const savedDirector = await Director.create({ type: 'director', ...restDirector });
   if (movies?.length) {
-    await Movie.updateMany({ _id: { $in: movies } }, { $push: { directors: savedDirector._id } }).exec();
+    await Movie.updateMany({ _id: { $in: movies } }, { director: savedDirector._id });
   }
   return savedDirector;
 };
 
 const movies: DirectorResolvers['movies'] = ({ _id }) => {
-  return Movie.find({ directors: _id }).exec();
+  return Movie.find({ director: _id }).exec();
 };
 
 const genres: DirectorResolvers['genres'] = ({ genres }) => {

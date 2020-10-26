@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import Actor from '../modules/Actors/actor.model';
+import Actor, { ActorModel } from '../modules/Actors/actor.model';
 
 const chance = new Chance();
 
@@ -15,6 +15,7 @@ function generateFakeActors() {
         .map(() => chance.word());
 
       return {
+        type: 'actor',
         name: `${name} ${lastName}`,
         birthName: birthName,
         birthDate: chance.birthday(),
@@ -26,6 +27,6 @@ function generateFakeActors() {
     });
 }
 
-export default function actorsSeeder() {
+export default function actorsSeeder(): Promise<ActorModel[]> {
   return Actor.insertMany(generateFakeActors());
 }
