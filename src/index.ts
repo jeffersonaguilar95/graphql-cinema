@@ -1,9 +1,6 @@
 import app from './app';
 import graphqlServer from './graphqlServer';
 import http from 'http';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 /**
  * Get port from environment and store in Express.

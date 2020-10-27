@@ -1,5 +1,6 @@
 import path from 'path';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import { mergeResolvers } from '@graphql-tools/merge';
 import { loadFilesSync } from '@graphql-tools/load-files';
 import { ApolloServer } from 'apollo-server-express';
@@ -8,7 +9,12 @@ import { mergeTypeDefs } from '@graphql-tools/merge';
 import { DIRECTIVES } from '@graphql-codegen/typescript-mongodb';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 
-mongoose.connect('mongodb://localhost:27017/cinema', { useUnifiedTopology: true, useNewUrlParser: true });
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_DB_URL || 'mongodb://localhost:27017/cinema', {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
 
 const typesArray = loadFilesSync(path.join(__dirname, './**/*.graphql'), { recursive: true });
 

@@ -13,7 +13,10 @@ const logger = pino({
 
 async function main() {
   logger.info('Starting connection with DB');
-  await mongoose.connect('mongodb://localhost:27017/cinema', { useUnifiedTopology: true, useNewUrlParser: true });
+  await mongoose.connect(process.env.MONGO_DB_URL || 'mongodb://localhost:27017/cinema', {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  });
   logger.info('Connection with DB succeed');
   logger.info('Seeding genres');
   const genres = await genresSeeder();
