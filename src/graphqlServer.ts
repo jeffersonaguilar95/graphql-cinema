@@ -35,7 +35,8 @@ const apolloServer: ApolloServer = new ApolloServer({
   schema: schemaWithResolvers,
   playground: {
     endpoint: '/graphql'
-  }
+  },
+  introspection: true
 });
 
 export default apolloServer;
