@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "concurrently \"nodemon\" \"npm:generate:types\"",
-    "heroku:start": "ts-node ./src/index.ts",
+    "cloud:start": "ts-node ./src/index.ts",
     "generate:types": "graphql-codegen --config codegen.yml --watch",
     "db:seed": "ts-node ./src/seeders/index.ts"
   },
