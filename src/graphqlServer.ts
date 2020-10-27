@@ -26,7 +26,10 @@ const schemaWithResolvers = addResolversToSchema({
 
 // Initialize Apollo server
 const apolloServer: ApolloServer = new ApolloServer({
-  schema: schemaWithResolvers
+  schema: schemaWithResolvers,
+  playground: {
+    endpoint: '/graphql'
+  }
 });
 
 export default apolloServer;
