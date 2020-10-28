@@ -15,4 +15,6 @@ app.get('*', (req, res) => {
   res.redirect(GRAPHQL_PATH);
 });
 
+export const isDevelopment = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined;
+
 export default app;
