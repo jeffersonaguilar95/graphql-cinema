@@ -45,6 +45,8 @@ const apolloServer: ApolloServer = new ApolloServer({
   },
   introspection: true,
   context: async ({ req }) => {
+    console.log('host---', req.get('host'));
+    console.log('origin---', req.get('origin'));
     try {
       await rateLimiter.consume(req.ip, 1);
     } catch (e) {
