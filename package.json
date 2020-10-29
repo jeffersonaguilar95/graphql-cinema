@@ -4,12 +4,13 @@
   "private": true,
   "main": "src/index.ts",
   "scripts": {
-    "start": "concurrently \"nodemon\" \"npm:generate:types\"",
     "build": "rimraf ./build && tsc && node copyGraphqlFiles.js",
-    "start:prod": "npm run build && node -r dotenv/config ./build/index.js",
+    "start": "npm run build && node -r dotenv/config ./build/index.js",
+    "start:dev": "npm run dkr:dev && concurrently \"nodemon\" \"npm:generate:types\"",
     "generate:types": "graphql-codegen --config codegen.yml --watch",
     "db:seed": "ts-node -r dotenv/config ./src/seeders/index.ts",
-    "dkr:start": "docker-compose up -d"
+    "dkr:start": "docker-compose up -d",
+    "dkr:dev": "docker-compose up -d mongodb redis"
   },
   "husky": {
     "hooks": {
