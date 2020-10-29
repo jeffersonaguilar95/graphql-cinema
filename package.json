@@ -5,7 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "concurrently \"nodemon\" \"npm:generate:types\"",
-    "cloud:start": "ts-node ./src/index.ts",
+    "build": "rimraf ./build && tsc && node copyGraphqlFiles.js",
+    "cloud:start": "npm run build && node ./build/index.js",
     "generate:types": "graphql-codegen --config codegen.yml --watch",
     "db:seed": "ts-node ./src/seeders/index.ts"
   },
@@ -27,6 +28,7 @@
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "fast-glob": "^3.2.4",
     "graphql": "^15.3.0",
     "graphql-config": "^3.0.3",
     "graphql-tools": "^6.0.13",
@@ -35,6 +37,7 @@
     "pino-pretty": "^4.3.0",
     "rate-limiter-flexible": "^2.1.13",
     "redis": "^3.0.2",
+    "rimraf": "^3.0.2",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.5"
   },
