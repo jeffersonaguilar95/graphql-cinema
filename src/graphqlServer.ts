@@ -1,5 +1,4 @@
 import path from 'path';
-import dotenv from 'dotenv';
 import redis from 'redis';
 import mongoose from 'mongoose';
 import { mergeResolvers } from '@graphql-tools/merge';
@@ -11,16 +10,23 @@ import { DIRECTIVES } from '@graphql-codegen/typescript-mongodb';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { rateLimiterMiddleware } from './common/middlewares';
 
-dotenv.config();
-
 // Connect to redis DB
-const redisClient = redis.createClient({ enable_offline_queue: false });
+const redisClient = redis.createClient({
+  enable_offline_queue: false,
+  url: process.env.REDIS_DB_URL || 'redis://localhost:6379'
+});
+
+redisClient.on('error', function (error) {
+  console.error('RedisDB error:', error);
+});
 
 // Connect to to mongoDB
 mongoose.connect(process.env.MONGO_DB_URL || 'mongodb://localhost:27017/cinema', {
   useUnifiedTopology: true,
   useNewUrlParser: true
 });
+
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Load graphql files
 const typesArray = loadFilesSync(path.join(__dirname, './**/*.graphql'), { recursive: true });
