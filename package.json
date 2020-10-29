@@ -1,7 +1,7 @@
 {
-  "name": "server-ex",
-  "version": "0.0.0",
-  "private": true,
+  "name": "graphql-cinema",
+  "version": "0.0.1",
+  "license": "MIT",
   "main": "src/index.ts",
   "scripts": {
     "build": "rimraf ./build && tsc && node copyGraphqlFiles.js",
