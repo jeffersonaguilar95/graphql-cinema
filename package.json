@@ -7,10 +7,11 @@
     "build": "rimraf ./build && tsc && node copyGraphqlFiles.js",
     "start": "npm run build && node -r dotenv/config ./build/index.js",
     "start:dev": "npm run dkr:dev && concurrently \"nodemon\" \"npm:generate:types\"",
-    "generate:types": "graphql-codegen --config codegen.yml --watch",
-    "db:seed": "ts-node -r dotenv/config ./src/seeders/index.ts",
     "dkr:start": "docker-compose up --build",
-    "dkr:dev": "docker-compose up -d mongodb redis"
+    "dkr:dev": "docker-compose up -d mongodb redis",
+    "db:seed:prod": "ts-node -r dotenv/config ./src/seeders/index.ts",
+    "db:seed:dev": "node -r dotenv/config ./build/seeders/index.js",
+    "generate:types": "graphql-codegen --config codegen.yml --watch"
   },
   "husky": {
     "hooks": {
