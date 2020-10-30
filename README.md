@@ -1,15 +1,17 @@
 # GraphQL Cinema
 
+![GitHub](https://img.shields.io/github/license/jeffersonaguilar95/graphql-cinema)
 ![GitHub repo dependencies](https://img.shields.io/david/jeffersonaguilar95/graphql-cinema)
 ![GitHub repo size](https://img.shields.io/github/repo-size/jeffersonaguilar95/graphql-cinema)
 ![GitHub contributors](https://img.shields.io/github/contributors/jeffersonaguilar95/graphql-cinema)
 ![GitHub stars](https://img.shields.io/github/stars/jeffersonaguilar95/graphql-cinema?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/jeffersonaguilar95/graphql-cinema?style=social)
-![GitHub](https://img.shields.io/github/license/jeffersonaguilar95/graphql-cinema)
 
 GraphQL Cinema is a `GraphQL server` built with Apollo Server that allows `create and list` resources such as `movies,actors,directors,genres` for educational purposes.
 
 The point of this is just show some of my backend skills, implementing an awesome tech stack that you will se below. 
+
+[Live Demo (GraphQL Playground)](http://ec2-52-54-247-163.compute-1.amazonaws.com:4000)
 
 ## Tech stack
 
@@ -36,7 +38,6 @@ To install graphql-cinema, follow these steps:
 $ npm install
 
 $ cp env.example .env
-
 ```
 By default, the .env file has the redis and mongodb credentials to connect to the docker containers.
 
