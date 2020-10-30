@@ -1,11 +1,11 @@
 # Graph Cinema
 
-![GitHub](https://img.shields.io/github/license/jeffersonaguilar95/graph-cinema)
-![GitHub repo dependencies](https://img.shields.io/david/jeffersonaguilar95/graph-cinema)
-![GitHub repo size](https://img.shields.io/github/repo-size/jeffersonaguilar95/graph-cinema)
-![GitHub contributors](https://img.shields.io/github/contributors/jeffersonaguilar95/graph-cinema)
-![GitHub stars](https://img.shields.io/github/stars/jeffersonaguilar95/graph-cinema?style=social)
-![GitHub forks](https://img.shields.io/github/forks/jeffersonaguilar95/graph-cinema?style=social)
+![GitHub](https://img.shields.io/github/license/jeffersonaguilar95/graphql-cinema)
+![GitHub repo dependencies](https://img.shields.io/david/jeffersonaguilar95/graphql-cinema)
+![GitHub repo size](https://img.shields.io/github/repo-size/jeffersonaguilar95/graphql-cinema)
+![GitHub contributors](https://img.shields.io/github/contributors/jeffersonaguilar95/graphql-cinema)
+![GitHub stars](https://img.shields.io/github/stars/jeffersonaguilar95/graphql-cinema?style=social)
+![GitHub forks](https://img.shields.io/github/forks/jeffersonaguilar95/graphql-cinema?style=social)
 
 Graph Cinema is a `GraphQL server` built with Apollo Server that allows `create and list` resources such as `movies,actors,directors,genres` for educational purposes.
 
