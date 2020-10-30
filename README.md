@@ -1,13 +1,13 @@
-# GraphQL Cinema
+# Graph Cinema
 
-![GitHub](https://img.shields.io/github/license/jeffersonaguilar95/graphql-cinema)
-![GitHub repo dependencies](https://img.shields.io/david/jeffersonaguilar95/graphql-cinema)
-![GitHub repo size](https://img.shields.io/github/repo-size/jeffersonaguilar95/graphql-cinema)
-![GitHub contributors](https://img.shields.io/github/contributors/jeffersonaguilar95/graphql-cinema)
-![GitHub stars](https://img.shields.io/github/stars/jeffersonaguilar95/graphql-cinema?style=social)
-![GitHub forks](https://img.shields.io/github/forks/jeffersonaguilar95/graphql-cinema?style=social)
+![GitHub](https://img.shields.io/github/license/jeffersonaguilar95/graph-cinema)
+![GitHub repo dependencies](https://img.shields.io/david/jeffersonaguilar95/graph-cinema)
+![GitHub repo size](https://img.shields.io/github/repo-size/jeffersonaguilar95/graph-cinema)
+![GitHub contributors](https://img.shields.io/github/contributors/jeffersonaguilar95/graph-cinema)
+![GitHub stars](https://img.shields.io/github/stars/jeffersonaguilar95/graph-cinema?style=social)
+![GitHub forks](https://img.shields.io/github/forks/jeffersonaguilar95/graph-cinema?style=social)
 
-GraphQL Cinema is a `GraphQL server` built with Apollo Server that allows `create and list` resources such as `movies,actors,directors,genres` for educational purposes.
+Graph Cinema is a `GraphQL server` built with Apollo Server that allows `create and list` resources such as `movies,actors,directors,genres` for educational purposes.
 
 The point of this is just show some of my backend skills, implementing an awesome tech stack that you will se below. 
 
@@ -30,9 +30,9 @@ Before you begin, ensure you have installed the following dependencies:
 * `docker/engine@latest` 
 * `docker-compose@latest`
 
-## Installing graphql-cinema
+## Installing graph-cinema
 
-To install graphql-cinema, follow these steps:
+To install graph-cinema, follow these steps:
 
 ```shell script
 $ npm install
@@ -41,9 +41,9 @@ $ cp env.example .env
 ```
 By default, the .env file has the redis and mongodb credentials to connect to the docker containers.
 
-## Run graphql-cinema server
+## Run graph-cinema server
 
-To run graphql-cinema server, follow these steps:
+To run graph-cinema server, follow these steps:
 
 ##### On development environment
 
