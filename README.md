@@ -11,7 +11,7 @@ Graph Cinema is a `GraphQL server` built with Apollo Server that allows `create 
 
 The point of this is just show some of my backend skills, implementing an awesome tech stack that you will se below. 
 
-[Live Demo (GraphQL Playground)](http://ec2-52-54-247-163.compute-1.amazonaws.com:4000)
+[Live Demo (GraphQL Playground)](http://ec2-34-201-72-147.compute-1.amazonaws.com:4000)
 
 ## Tech stack
 
