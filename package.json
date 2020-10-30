@@ -6,9 +6,9 @@
   "scripts": {
     "build": "rimraf ./build && tsc && node copyGraphqlFiles.js",
     "start": "npm run build && node -r dotenv/config ./build/index.js",
-    "start:dev": "npm run dkr:dev && concurrently \"nodemon\" \"npm:generate:types\"",
+    "start:dev": "concurrently \"npm run dkr:dev\" \"nodemon\" \"npm:generate:types\"",
     "dkr:start": "docker-compose up --build",
-    "dkr:dev": "docker-compose up -d mongodb redis",
+    "dkr:dev": "docker-compose up mongodb redis > /dev/null",
     "db:seed:dev": "ts-node -r dotenv/config ./src/seeders/index.ts",
     "db:seed:prod": "node -r dotenv/config ./build/seeders/index.js",
     "generate:types": "graphql-codegen --config codegen.yml --watch"

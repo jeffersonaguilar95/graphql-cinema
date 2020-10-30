@@ -17,7 +17,7 @@ services:
   mongodb:
     image: mongo
     ports:
-      - "27020:27017"
+      - "27017:27017"
     volumes:
       - mongodb:/data/db
     networks:
@@ -26,7 +26,7 @@ services:
   redis:
     image: redis
     ports:
-      - "6380:6379"
+      - "6379:6379"
     networks:
       - backend
 
