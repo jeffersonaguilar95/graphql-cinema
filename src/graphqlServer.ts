@@ -1,6 +1,7 @@
 import path from 'path';
 import redis from 'redis';
 import mongoose from 'mongoose';
+import depthLimit from 'graphql-depth-limit';
 import { mergeResolvers } from '@graphql-tools/merge';
 import { loadFilesSync } from '@graphql-tools/load-files';
 import { ApolloServer } from 'apollo-server-express';
@@ -55,7 +56,8 @@ const apolloServer: ApolloServer = new ApolloServer({
     endpoint: '/graphql'
   },
   introspection: true,
-  context: rateLimiterMiddleware({ redisClient, mergedResolvers })
+  context: rateLimiterMiddleware({ redisClient, mergedResolvers }),
+  validationRules: [depthLimit(10)]
 });
 
 export default apolloServer;
