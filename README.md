@@ -26,9 +26,9 @@ The point of this is just show some of my backend skills, implementing an awesom
 
 Before you begin, ensure you have installed the following dependencies:
 
-* `nodejs@latest`
-* `docker/engine@latest` 
-* `docker-compose@latest`
+* `nodejs >= 12.x`
+* `docker/engine 19.x` 
+* `docker-compose 1.x`
 
 ## Installing graph-cinema
 
