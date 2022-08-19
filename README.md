@@ -1,7 +1,6 @@
 # Graph Cinema
 
 ![GitHub](https://img.shields.io/github/license/jeffersonaguilar95/graphql-cinema)
-![GitHub repo dependencies](https://img.shields.io/david/jeffersonaguilar95/graphql-cinema)
 ![GitHub repo size](https://img.shields.io/github/repo-size/jeffersonaguilar95/graphql-cinema)
 ![GitHub contributors](https://img.shields.io/github/contributors/jeffersonaguilar95/graphql-cinema)
 ![GitHub stars](https://img.shields.io/github/stars/jeffersonaguilar95/graphql-cinema?style=social)
